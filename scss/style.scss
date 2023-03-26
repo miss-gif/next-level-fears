@@ -3,19 +3,41 @@
   margin: 0;
 }
 
-body {
-  background-color: #333;
-  cursor: none !important;
+button {
+  border: none;
 }
+
+$background-color: #333;
+$background-change-color: #156;
 
 $cursor-color: #111;
 $cursor-inner-color: #fff;
 $cursor-trace-color: rgba(0, 0, 0, 0.25);
 
+$preloader-btn-color: orange;
+$preloader-btn-background-color: #333;
+
+body {
+  background-color: $background-color;
+  cursor: none !important;
+}
+
+.show-area {
+  overflow: hidden;
+  display: block;
+  opacity: 1;
+}
+
+.hidden-area {
+  display: none;
+  opacity: 0;
+}
+
 .cursor {
   position: fixed;
   inset: 0;
   z-index: 9999;
+  pointer-events: none !important;
   &__default__inner {
     position: absolute;
     display: inline-block;
@@ -67,5 +89,36 @@ $cursor-trace-color: rgba(0, 0, 0, 0.25);
   100% {
     transform: scale(10);
     opacity: 0;
+  }
+}
+
+.preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $background-change-color;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+
+  &__btn {
+    $w: 120px;
+    $h: 120px;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    width: $w;
+    height: $h;
+    border-radius: 50%;
+    color: $preloader-btn-color;
+    background-color: $preloader-btn-background-color;
+    margin-top: calc($w/-2);
+    margin-left: calc($h/-2);
+  }
+  &__btn_hold {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 800;
+    letter-spacing: normal;
   }
 }
